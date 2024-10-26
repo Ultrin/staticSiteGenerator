@@ -1,44 +1,36 @@
 import unittest
 
-from textnode import (
-    TextNode,
-    text_type_text,
-    text_type_bold,
-    text_type_italic,
-    text_type_code,
-    text_type_image,
-    text_type_link,
-)
+from textnode import TextNode, TextType
 
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
-        node = TextNode("This is a text node", text_type_bold)
-        node2 = TextNode("This is a text node", text_type_bold)
-        self.assertEqual(node, node2, "Test Passed: Nodes match.")
+        node = TextNode("This is a text node", TextType.BOLD)
+        node2 = TextNode("This is a text node", TextType.BOLD)
+        self.assertEqual(node, node2, "Test Failed: Nodes are unequal.")
 
     def test_text_diff(self):
-            node = TextNode("This is a text node", text_type_bold)
-            node2 = TextNode("This is a text node2", text_type_bold)
+            node = TextNode("This is a text node", TextType.BOLD)
+            node2 = TextNode("This is a text node2", TextType.BOLD)
             self.assertNotEqual(node, node2,
-                                "Test Passed: Nodes are not equal - text is different.")
+                                "Test failed: Nodes are not unequal.")
 
     def test_text_type_diff(self):
-            node = TextNode("This is a text node", text_type_bold)
-            node2 = TextNode("This is a text node", text_type_italic)
+            node = TextNode("This is a text node", TextType.BOLD)
+            node2 = TextNode("This is a text node", TextType.ITALIC)
             self.assertNotEqual(node, node2,
-                                "Test Passed: Nodes are not equal - text type is different.")
+                                "Test failed: Nodes are not unequal.")
 
     def test_url_eq(self):
-        node = TextNode("This is a text node", text_type_bold,"https://www.google.ie")
-        node2 = TextNode("This is a text node", text_type_bold,"https://www.google.ie")
-        self.assertEqual(node, node2,"Test Passed: Nodes are equal")
+        node = TextNode("This is a text node", TextType.BOLD,"https://www.google.ie")
+        node2 = TextNode("This is a text node", TextType.BOLD,"https://www.google.ie")
+        self.assertEqual(node, node2,"Test Failed: Nodes are unequal.")
 
     def test_repr_eq(self):
-        node = TextNode("This is a text node", text_type_bold, "https://www.google.ie")
+        node = TextNode("This is a text node", TextType.BOLD, "https://www.google.ie")
         self.assertEqual(
-            "TextNode(This is a text node, text, https://www.google.ie)", repr(node), 
-            "Test Passed")
+            "TextNode(This is a text node, bold, https://www.google.ie)", repr(node), 
+            "Test Failed")
 
     
 if __name__ == "__main__":
