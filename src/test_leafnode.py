@@ -1,7 +1,7 @@
 from htmlnode import LeafNode
 import unittest
 
-class TestTextNode(unittest.TestCase):
+class TestLeafNode(unittest.TestCase):
     def test_just_text(self):
         node = LeafNode(None, "Plain text")
         expected = "Plain text"

@@ -1,7 +1,7 @@
 from htmlnode import LeafNode, ParentNode
 import unittest
 
-class TestTextNode(unittest.TestCase):
+class TestParentNode(unittest.TestCase):
     def test_no_child(self):
         node = ParentNode("div", None)
         with self.assertRaises(ValueError):

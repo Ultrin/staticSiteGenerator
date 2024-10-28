@@ -1,7 +1,7 @@
 from htmlnode import HTMLNode
 import unittest
 
-class TestTextNode(unittest.TestCase):
+class TestHTMLNode(unittest.TestCase):
     def test_parameters(self):
         node = HTMLNode("div", "hello world")
 
